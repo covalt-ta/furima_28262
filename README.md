@@ -29,7 +29,7 @@
 | price                  | integer    | null: false                   |
 | user                   | references | null: false foreign_key: true |
 | item_category_id       | integer    | null: false                   |
-| shipping_status_id     | integer    | null: false                   |
+| item_status_id         | integer    | null: false                   |
 | shipping_fee_id        | integer    | null: false                   |
 | shipment_prefecture_id | integer    | null: false                   |
 | shipping_day_id        | integer    | null: false                   |
@@ -38,7 +38,7 @@
 ### Association
 
 - belongs_to_active_hash :item_category
-- belongs_to_active_hash :shipping_status
+- belongs_to_active_hash :item_status
 - belongs_to_active_hash :shipping_fee
 - belongs_to_active_hash :shipment_prefecture
 - belongs_to_active_hash :shipping_day
@@ -96,7 +96,7 @@
 | model              |
 | ------------------ |
 | ItemCategory       |
-| ProductStatus      |
+| ItemStatus         |
 | ShippingFee        |
 | ShipmentPrefecture |
 | ShippingDay        |

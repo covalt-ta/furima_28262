@@ -13,6 +13,12 @@
 | first_name_kana | string | null: false |
 | birthday        | date   | null: false |
 
+### Association
+
+- has_many :items
+- has_many :comments
+- has_many :likes
+
 
 ## items テーブル
 
@@ -53,12 +59,10 @@
 | building     | string     |                               |
 | phone_number | string     | null: false                   |
 | item         | references | null: false foreign_key: true |
-| user         | references | null: false foreign_key: true |
 
 ### Association
 
 - belongs_to :item
-- belongs_to :user
 
 
 ## comments テーブル

@@ -15,12 +15,12 @@
 
 ### Association
 
-- has_many :products
+- has_many :items
 - has_many :comments
 - has_many :likes
 - has_one  :address
 
-## products テーブル
+## items テーブル
 
 | Column                 | Type       | Options                       |
 | ---------------------- | ---------- | ----------------------------- |
@@ -28,7 +28,7 @@
 | text                   | text       | null: false                   |
 | price                  | integer    | null: false                   |
 | user_id                | references | null: false foreign_key: true |
-| product_category_id    | references | null: false foreign_key: true |
+| item_category_id       | references | null: false foreign_key: true |
 | shipping_fee_id        | references | null: false foreign_key: true |
 | shipment_prefecture_id | references | null: false foreign_key: true |
 | shipping_day_id        | references | null: false foreign_key: true |
@@ -36,7 +36,7 @@
 
 ### Association
 
-- belongs_to_active_hash :product_category
+- belongs_to_active_hash :item_category
 - belongs_to_active_hash :shipping_fee
 - belongs_to_active_hash :shipment_prefecture
 - belongs_to_active_hash :shipping_day
@@ -63,7 +63,7 @@
 
 ### Association
 
-- belongs_to :product
+- belongs_to :item
 - belongs_to :user
 
 
@@ -72,31 +72,31 @@
 | Column       | Type       | Options                       |
 | ------------ | ---------- | ----------------------------- |
 | comment      | text       | null: false                   |
-| product_id   | references | null: false foreign_key: true |
+| item_id      | references | null: false foreign_key: true |
 | user_id      | references | null: false foreign_key: true |
 
 ### Association
 
-- belongs_to :product
+- belongs_to :item
 - belongs_to :user
 
 ## likes テーブル
 
 | Column       | Type       | Options                       |
 | ------------ | ---------- | ----------------------------- |
-| product_id   | references | null: false foreign_key: true |
+| item_id      | references | null: false foreign_key: true |
 | user_id      | references | null: false foreign_key: true |
 
 ### Association
 
-- belongs_to :product
+- belongs_to :item
 - belongs_to :user
 
 ## ActiveHash 
 
 | model              |
 | ------------------ |
-| ProductCategory    |
+| ItemCategory       |
 | ProductStatus      |
 | ShippingFee        |
 | ShipmentPrefecture |

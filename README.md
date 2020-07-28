@@ -13,26 +13,20 @@
 | first_name_kana | string | null: false |
 | birthday        | date   | null: false |
 
-### Association
-
-- has_many :items
-- has_many :comments
-- has_many :likes
-- has_one  :address
 
 ## items テーブル
 
-| Column                 | Type       | Options                       |
-| ---------------------- | ---------- | ----------------------------- |
-| name                   | string     | null: false                   |
-| text                   | text       | null: false                   |
-| price                  | integer    | null: false                   |
-| user_id                | references | null: false foreign_key: true |
-| item_category_id       | references | null: false foreign_key: true |
-| shipping_fee_id        | references | null: false foreign_key: true |
-| shipment_prefecture_id | references | null: false foreign_key: true |
-| shipping_day_id        | references | null: false foreign_key: true |
-| shipping_fee_id        | references | null: false foreign_key: true |
+| Column              | Type       | Options                       |
+| ------------------- | ---------- | ----------------------------- |
+| name                | string     | null: false                   |
+| text                | text       | null: false                   |
+| price               | integer    | null: false                   |
+| user                | references | null: false foreign_key: true |
+| item_category       | integer    | null: false                   |
+| shipping_fee        | integer    | null: false                   |
+| shipment_prefecture | integer    | null: false                   |
+| shipping_day        | integer    | null: false                   |
+| shipping_fee        | integer    | null: false                   |
 
 ### Association
 
@@ -48,18 +42,18 @@
 - has_one_attached       :image
 
 
-## address テーブル
+## addresses テーブル
 
 | Column       | Type       | Options                       |
 | ------------ | ---------- | ----------------------------- |
-| postal_code  | integer    | null: false                   |
+| postal_code  | string     | null: false                   |
 | prefecture   | integer    | null: false                   |
 | city         | string     | null: false                   |
 | block        | string     | null: false                   |
 | building     | string     |                               |
-| phone_number | integer    | null: false                   |
-| product_id   | references | null: false foreign_key: true |
-| user_id      | references | null: false foreign_key: true |
+| phone_number | string     | null: false                   |
+| item         | references | null: false foreign_key: true |
+| user         | references | null: false foreign_key: true |
 
 ### Association
 
@@ -69,11 +63,11 @@
 
 ## comments テーブル
 
-| Column       | Type       | Options                       |
-| ------------ | ---------- | ----------------------------- |
-| comment      | text       | null: false                   |
-| item_id      | references | null: false foreign_key: true |
-| user_id      | references | null: false foreign_key: true |
+| Column  | Type       | Options                       |
+| ------- | ---------- | ----------------------------- |
+| comment | text       | null: false                   |
+| item    | references | null: false foreign_key: true |
+| user    | references | null: false foreign_key: true |
 
 ### Association
 
@@ -82,10 +76,10 @@
 
 ## likes テーブル
 
-| Column       | Type       | Options                       |
-| ------------ | ---------- | ----------------------------- |
-| item_id      | references | null: false foreign_key: true |
-| user_id      | references | null: false foreign_key: true |
+| Column    | Type       | Options                       |
+| --------- | ---------- | ----------------------------- |
+| item      | references | null: false foreign_key: true |
+| user      | references | null: false foreign_key: true |
 
 ### Association
 

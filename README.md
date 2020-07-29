@@ -18,6 +18,7 @@
 - has_many :items
 - has_many :comments
 - has_many :likes
+- has_many :orders
 
 
 ## items テーブル
@@ -46,7 +47,22 @@
 - has_many               :comments
 - has_many               :likes
 - has_one                :address
+- has_one                :order
 - has_one_attached       :image
+
+
+## orders テーブル
+
+| Column | Type       | Options                       |
+| ------ | ---------- | ----------------------------- |
+| user   | references | null: false foreign_key: true |
+| item   | references | null: false foreign_key: true |
+| text   | text       | null: false                   |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
 
 
 ## addresses テーブル

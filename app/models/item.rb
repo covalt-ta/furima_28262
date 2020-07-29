@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_fee
 
   validates :name, :text, :price, :item_category, :item_status,
-            :shipment_prefecure, :shpping_day, :shipping_fee, presence: true
+            :shipment_prefecture, :shipping_day, :shipping_fee, presence: true
   
   with_options numericality: { other_than: 1 } do
     validates :item_category_id, :item_status_id, :shipment_prefecture_id,

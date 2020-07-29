@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipment_prefecture
   belongs_to_active_hash :shipping_day
   belongs_to_active_hash :shipping_fee
+  has_one_attached :image
 
   validates :name, :text, :price, :item_category, :item_status,
             :shipment_prefecture, :shipping_day, :shipping_fee, presence: true

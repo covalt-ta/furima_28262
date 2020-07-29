@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   has_one_attached :image
   has_one_attached :address
 
-  validates :name, :text, :price, :item_category, :item_status,
+  validates :name, :text, :price, :item_category, :item_status, :image,
             :shipment_prefecture, :shipping_day, :shipping_fee, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   with_options numericality: { other_than: 1 } do

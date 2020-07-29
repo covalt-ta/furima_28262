@@ -1,24 +1,129 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| nickname        | string | null: false |
+| email           | string | null: false |
+| password        | string | null: false |
+| last_name       | string | null: false |
+| first_name      | string | null: false |
+| last_name_kana  | string | null: false |
+| first_name_kana | string | null: false |
+| birthday        | date   | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :comments
+- has_many :likes
+- has_many :orders
 
-* Configuration
 
-* Database creation
+## items テーブル
 
-* Database initialization
+| Column                 | Type       | Options                       |
+| ---------------------- | ---------- | ----------------------------- |
+| name                   | string     | null: false                   |
+| text                   | text       | null: false                   |
+| price                  | integer    | null: false                   |
+| user                   | references | null: false foreign_key: true |
+| item_category_id       | integer    | null: false                   |
+| item_status_id         | integer    | null: false                   |
+| shipping_fee_id        | integer    | null: false                   |
+| shipment_prefecture_id | integer    | null: false                   |
+| shipping_day_id        | integer    | null: false                   |
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
 
-* Deployment instructions
+- belongs_to_active_hash :item_category
+- belongs_to_active_hash :item_status
+- belongs_to_active_hash :shipping_fee
+- belongs_to_active_hash :shipment_prefecture
+- belongs_to_active_hash :shipping_day
+- belongs_to             :user
+- has_many               :comments
+- has_many               :likes
+- has_one                :address
+- has_one                :order
+- has_one_attached       :image
 
-* ...
+
+## orders テーブル
+
+| Column | Type       | Options                       |
+| ------ | ---------- | ----------------------------- |
+| user   | references | null: false foreign_key: true |
+| item   | references | null: false foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+
+
+## addresses テーブル
+
+| Column       | Type       | Options                       |
+| ------------ | ---------- | ----------------------------- |
+| postal_code  | string     | null: false                   |
+| prefecture   | integer    | null: false                   |
+| city         | string     | null: false                   |
+| block        | string     | null: false                   |
+| building     | string     |                               |
+| phone_number | string     | null: false                   |
+| item         | references | null: false foreign_key: true |
+
+### Association
+
+- belongs_to :item
+
+
+## comments テーブル
+
+| Column  | Type       | Options                       |
+| ------- | ---------- | ----------------------------- |
+| comment | text       | null: false                   |
+| item    | references | null: false foreign_key: true |
+| user    | references | null: false foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+
+## likes テーブル
+
+| Column    | Type       | Options                       |
+| --------- | ---------- | ----------------------------- |
+| item      | references | null: false foreign_key: true |
+| user      | references | null: false foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+
+## ActiveHash 
+
+| model              |
+| ------------------ |
+| ItemCategory       |
+| ItemStatus         |
+| ShippingFee        |
+| ShipmentPrefecture |
+| ShippingDay        |
+
+## Active Storage 
+画像用テーブルはActive Storageを使用
+
+### Gem / ツール
+- active_storage
+- imagemagick
+- mini_magick
+- image_processing
+
+## PAY.JP
+クレジットカード決済機能にはPAY.JPを用いて実装

@@ -20,4 +20,5 @@ function calc() {
     e.preventDefault();
   })
 }
-window.addEventListener("load", calc);
+setInterval(calc, 1000);
+// window.addEventListener("load", calc);

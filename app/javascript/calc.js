@@ -1,0 +1,23 @@
+function calc() {
+  const input = document.getElementById("item_price");
+
+  input.addEventListener("input", (e) => {
+    const inputData = document.getElementById("item_price").value;
+    const price = Number(inputData);
+    const taxArea = document.getElementById("add-tax-price");
+    const profitArea = document.getElementById("profit");
+
+    if (inputData.match(/^([1-9]\d*|0)$/)) {
+    const taxPrice = Math.floor(price * 0.1);
+    const profit = Math.floor(price - taxPrice);
+
+    taxArea.innerHTML = taxPrice.toLocaleString();
+    profitArea.innerHTML = profit.toLocaleString();
+    } else {
+      taxArea.innerHTML = "半角数字のみ入力可能";
+      profitArea.innerHTML = "半角数字のみ入力可能";
+    }
+    e.preventDefault();
+  })
+}
+window.addEventListener("load", calc);

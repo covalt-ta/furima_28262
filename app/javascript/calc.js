@@ -6,9 +6,9 @@ function calc() {
     const price = Number(inputData);
     const taxArea = document.getElementById("add-tax-price");
     const profitArea = document.getElementById("profit");
-
+    let commissionRate = 0.1;
     if (inputData.match(/^([1-9]\d*|0)$/)) {
-    const taxPrice = Math.floor(price * 0.1);
+    const taxPrice = Math.floor(price * commissionRate);
     const profit = Math.floor(price - taxPrice);
 
     taxArea.innerHTML = taxPrice.toLocaleString();

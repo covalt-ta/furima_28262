@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipment_prefecture
   belongs_to_active_hash :shipping_day
   belongs_to_active_hash :shipping_fee
+  belongs_to :user
   has_one_attached :image
   has_one_attached :address
 

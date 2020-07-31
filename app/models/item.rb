@@ -11,6 +11,8 @@ class Item < ApplicationRecord
 
   validates :name, :text, :price, :item_category, :item_status, :image,
             :shipment_prefecture, :shipping_day, :shipping_fee, presence: true
+  validates :name, length: { maximum: 40}
+  validates :text, length: { maximum: 1000}
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   with_options numericality: { other_than: 1 } do
     validates :item_category_id, :item_status_id, :shipment_prefecture_id,

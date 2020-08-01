@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :items
 
   with_options presence: true do
-    validates :nickname
+    validates :nickname, uniqueness: true, format: { with: /\A[ぁ-んァ-ン一-龥a-z0-9]+\z/i}
     validates :last_name
     validates :first_name
     validates :last_name_kana

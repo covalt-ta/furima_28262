@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_fee
   belongs_to :user
   has_one_attached :image
-  has_one_attached :address
+  has_one :address, dependent: :restrict_with_error
 
   validates :name, :text, :price, :item_category, :item_status, :image,
             :shipment_prefecture, :shipping_day, :shipping_fee, presence: true

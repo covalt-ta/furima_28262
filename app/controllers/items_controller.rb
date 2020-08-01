@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :move_to_sign_in, only: [:new, :create]
-  before_action :set_item, only: [:show, :destroy]
+  before_action :move_to_sign_in, expect: [:index, :show]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   def index
     @items = Item.includes(:user).order('created_at DESC')
   end
@@ -19,6 +19,17 @@ class ItemsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to @item
+    else
+      render :edit
+    end
   end
 
   def destroy

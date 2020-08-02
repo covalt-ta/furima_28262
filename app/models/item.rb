@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_one :address, dependent: :restrict_with_error
+  has_one :order
 
   validates :name, :text, :price, :item_category, :item_status, :image,
             :shipment_prefecture, :shipping_day, :shipping_fee, presence: true

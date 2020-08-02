@@ -5,7 +5,7 @@ class Address < ApplicationRecord
 
   with_options presence: true do 
     validates :postal_code
-    validates :shipment_prefecture, numericality: { other_than: 1 }
+    validates :shipment_prefecture_id, numericality: { other_than: 1 }
     validates :city
     validates :building
     validates :phone_number

@@ -1,11 +1,13 @@
 class Address < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :shipment_prefecture
+  belongs_to :item
 
-  validates :postal_code, :shipment_prefecture, :city, :block, :building,
-            :phone_number, :item_id, presence: true
-
-  with_options numericality: { other_than: 1 } do
-    validates :shipment_prefecture_id
+  with_options presence: true do 
+    validates :postal_code
+    validates :shipment_prefecture, numericality: { other_than: 1 }
+    validates :city
+    validates :building
+    validates :phone_number
   end
 end

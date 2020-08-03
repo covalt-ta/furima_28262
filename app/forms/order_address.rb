@@ -4,6 +4,13 @@ class OrderAddress
 
   #バリデーションは基本動作確認後に実装
 
+  with_options presence: true do 
+    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
+    validates :shipment_prefecture_id, numericality: { other_than: 1 }
+    validates :city
+    validates :phone_number, format: { with: /\A\d{,11}\z/ }
+  end
+
   def save
     Address.create(
       postal_code: postal_code,

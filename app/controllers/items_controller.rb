@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_sign_in, expect: [:index, :show]
+  before_action :move_to_sign_in, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   def index
     @items = Item.includes(:user).order('created_at DESC')

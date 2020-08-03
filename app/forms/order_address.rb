@@ -5,7 +5,6 @@ class OrderAddress
   #バリデーションは基本動作確認後に実装
 
   def save
-    Order.create(item_id: item_id, user_id: user_id)
     Address.create(
       postal_code: postal_code,
       shipment_prefecture_id: shipment_prefecture_id,
@@ -15,5 +14,6 @@ class OrderAddress
       phone_number: phone_number,
       item_id: item_id
     )
+    Order.create(item_id: item_id, user_id: user_id)
   end
 end

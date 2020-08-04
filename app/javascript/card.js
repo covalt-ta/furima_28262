@@ -28,14 +28,9 @@ const pay = () => {
         document.getElementById("charge-form").submit();
         document.getElementById("charge-form").reset();
       } else {
-        // レスポンスが正常ではなかった場合の処理
-        // alert(`Error ${status}: ${statusText}`);
       }
     });
-     // リクエストが正常にできなかった場合の処理
-    // if(!response.ok){
-      // alert(`サーバーエラー：${response}`);
-    // }
+    e.preventDefault();
   });
 };
 

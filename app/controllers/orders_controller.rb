@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
       @order.save
       redirect_to root_path
     else
-      render :index
+      redirect_to action: :index
     end
   end
 
@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
       amount: @item.price,
       card: params[:token],
       currency: 'jpy'
-    )
+      )
   end
 
   def set_item

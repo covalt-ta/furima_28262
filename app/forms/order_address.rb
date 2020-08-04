@@ -11,7 +11,7 @@ class OrderAddress
     validates :user_id
     validates :item_id
   end
-  validates :building, format: { with: /\A[ぁ-んァ-ン一-龥\d]/, allow_nil: true }
+  validates :building, format: { with: /\A[ぁ-んァ-ン一-龥\d]/ }, allow_nil: true, allow_blank: true
   validate :uniqueness?
 
   def save

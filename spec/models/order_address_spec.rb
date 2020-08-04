@@ -21,9 +21,9 @@ RSpec.describe OrderAddress, type: :model do
       expect(@order_address.errors.full_messages).to include("Postal code can't be blank")
     end
     it 'postal_codeがハイフンが入っていないと保存できない' do
-      @order_address.postal_code = "1234567"
+      @order_address.postal_code = '1234567'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Postal code is invalid")
+      expect(@order_address.errors.full_messages).to include('Postal code is invalid')
     end
     it 'shipment_prefecture_idが選択されていないと保存できない' do
       @order_address.shipment_prefecture_id = nil
@@ -33,12 +33,12 @@ RSpec.describe OrderAddress, type: :model do
     it 'cityが空だと保存できない' do
       @order_address.city = nil
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("City can't be blank", "City is invalid")
+      expect(@order_address.errors.full_messages).to include("City can't be blank", 'City is invalid')
     end
     it 'cityが空だとアルファベットだと保存できない' do
-      @order_address.city = "shibuya"
+      @order_address.city = 'shibuya'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("City is invalid")
+      expect(@order_address.errors.full_messages).to include('City is invalid')
     end
     it 'blockが空だと保存できない' do
       @order_address.block = nil
@@ -46,14 +46,14 @@ RSpec.describe OrderAddress, type: :model do
       expect(@order_address.errors.full_messages).to include("Block can't be blank")
     end
     it 'blockがアルファベットだと保存できない' do
-      @order_address.block = "roppongi1-1"
+      @order_address.block = 'roppongi1-1'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Block is invalid")
+      expect(@order_address.errors.full_messages).to include('Block is invalid')
     end
     it 'buildingがアルファベットだと保存できない' do
-      @order_address.building = "Tokiwaso101"
+      @order_address.building = 'Tokiwaso101'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Building is invalid")
+      expect(@order_address.errors.full_messages).to include('Building is invalid')
     end
     it 'phone_numberが空だと保存できない' do
       @order_address.phone_number = nil
@@ -61,14 +61,14 @@ RSpec.describe OrderAddress, type: :model do
       expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
     end
     it 'phone_numberにハイフンが入ると保存できない' do
-      @order_address.phone_number = "090-12-1221"
+      @order_address.phone_number = '090-12-1221'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      expect(@order_address.errors.full_messages).to include('Phone number is invalid')
     end
     it 'phone_numberが12桁以上だと保存できない' do
-      @order_address.phone_number = "090123456789"
+      @order_address.phone_number = '090123456789'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      expect(@order_address.errors.full_messages).to include('Phone number is invalid')
     end
     it 'user_idが空だと保存できない' do
       @order_address.user_id = nil
